@@ -1,0 +1,239 @@
+ismet hoca ders
+
+WebElement element = driver.findElement(By.id("label_3"));
+WebElement element = driver.findElement(By.id("label_"));
+WebElement element = driver.findElement(By.className("form-submit-button"));
+
+List<WebElement> elements = driver.findElements(By.className("form-sub-label")); //bulamazsa hata vermiyoriboş liste getiriyor.
+        for (WebElement element3: elements
+             ) {
+            System.out.println(element3.getText());
+        }
+
+WebElement element = driver.findElement(By.linkText("Siparişlerim")); //sadece <a> taglerinde çalışır
+WebElement element2 = driver.findElement(By.partialLinkText("Süper Fiyat")); //sadece <a> taglerinde çalıyor
+
+List<WebElement> list = driver.findElements(By.tagName("a"));
+        for (WebElement e: list
+             ) {
+            System.out.println("e.getText() = " + e.getText());
+
+        }
+
+driver.navigate().to("https://testpages.herokuapp.com/styled/index.html");
+WebElement element = driver.findElement(By.linkText("Alerts (JavaScript)"));
+driver.navigate().back();
+driver.navigate().forward();
+
+******************************************************************************************
+**css selector**
+WebElement element2 = driver.findElement(By.cssSelector("[value='Online Advertising']"));
+WebElement element4 = driver.findElement(By.cssSelector("label [id='u_1fG_4589_0']"));
+WebElement element6 = driver.findElement(By.cssSelector("[id='u_1fG_4597']> :nth-child(4)"));
+WebElement element = driver.findElement(By.cssSelector("div [placeholder=\"Full Name\"]"));
+WebElement element1 = driver.findElement(By.cssSelector("div [placeholder=\"name@example.com\"]"));
+WebElement element2 = driver.findElement(By.cssSelector("div [placeholder=\"Current Address\"]"));
+WebElement element3 = driver.findElement(By.cssSelector("div [id=\"permanentAddress-wrapper\"] [class=\"form-control\"]"));
+WebElement element4 = driver.findElement(By.cssSelector("div [class=\"mt-2 justify-content-end row\"] [class=\"btn btn-primary\"]"));
+
+id ve name den sonra Kolaydır.(easy)
+id ve name den sonra en hızlısıdır.(faster)
+id ve name den sonra Tarayıcılar diline en uygun olanıdır.(native)
+Web yazılımcıları elemanlarda özellikleri her zaman kullanılır. Bu yüzden kullanışlıdır.
+
+id için
+By.cssSelector(‘’#logout’’); // id si logout olan
+By.cssSelector(‘’a#logout’’);  // a tag lılar için de id si logout olan
+
+class için
+By.cssSelector(‘’.center’’); // [class=‘center’]
+By.cssSelector(‘’p.center’’);  // p tag lılar için de class i center olan
+
+Tag name ile arama
+By.cssSelector(‘’input’’); // bütün input taglı olanları seçer.
+By.cssSelector(‘’input[type=‘text’]’’);  //bütün inputlarda type=‘’text’’ olanları seçer
+By.cssSelector(‘’input[type=‘text’][placeholder=‘First Name’]’’) // bütün inputlar içinden type=‘’text’’ ve placeholder=‘’First Name’’ olanı bulur.
+By.cssSelector(‘’[type=‘text’]’’);  //type=‘’text’’ olanları seçer
+By.cssSelector(‘’input.form-control[type=‘text’]’’);  //bütün inputlarda class=‘form-control’ olanlardan type=‘text’ olanlar seçer
+
+Startwith, endingwith, containing ile arama
+* -> İçinde geçen
+^ -> ile başlayan
+$ -> ile biten
+"input[class*=form]"
+"input[class^=form]"
+"input[class$=form]"
+
++ ile bitişik(kardeş) elemanı bulma
+~ ile kardeşlerden elemanı bulma
+> ile child elemanı bulma (For Children)
+Space  ile tum alt elemanlardan bulma
+profile > : nth-child(2)
+profile > : nth-last-child(1)
+
+img: nth-of-type(1)
+p: nth-of-type(1)
+
+: disable
+By.cssSelector("input:disable")
+
+: checked
+By.cssSelector("input:checked")
+By.cssSelector("input:not(:checked)")
+
+Locator in java & chrome console
+
+Java => driver.findElement(By.cssSelector("fieldset>div"))
+Crome Console => $ ("fieldset>div")
+
+Java => driver.findElement(By.cssSelector("fieldset>div"))
+Crome Console => $$("fieldset>div")
+
+*********************************************************************************
+
+xpath
+
+ interviewlarda kaç çeşit xpath vardır şeklinde soru gelebilir.
+
+           Relative Xpath denir.
+           //*[@id='login-button']
+            1- // başlıyor.
+            2- Elemanı direk bulur, baştan itibaren diğer elemanlara bağlı kalmaz.
+
+           Absolute Xpath deniyor.
+           /html/body/div[2]/div/div/div/form/input
+           1- / başlıyor.
+           2- En baştan HTML den başlyarak bir yol bulur.Araya başka eleman girdiğind eyol kaybolur.
+           Bu yüzden kullanışsızdır.
+
+
+XPath'in herhangi bir yerindeki tek bir eğik çizgi '/',
+öğeyi hemen ana öğesinin içinde aramak anlamına gelir.
+Çift eğik çizgi '//', ana öğenin içindeki herhangi
+bir alt öğeyi veya herhangi bir torun öğeyi aramayı belirtir.
+
+/  = >
+// = space
+
+XPath: //div/a
+CSS: div > a
+
+XPath: //div//a
+CSS: div a
+
+XPath: //div[@id='example']
+CSS: #example
+
+XPATH: //input[@id='username']/following-sibling::input[1]
+CSS: #username + input
+
+XPATH: //input[@name='username']
+CSS: input[name='username']
+
+XPATH: //input[@name='login'and @type='submit']
+CSS: input[name='login'][type='submit']
+
+
+CSS: #recordlist li:nth-of-type(4)
+CSS: #recordlist li:nth-child(4)
+CSS: #recordlist *:nth-child(4)
+
+
+xpath:
+//fieldset[contains(@id,'4586')]
+//fieldset[starts-with(@id,'u_ly6_4')]
+//fieldset[ends-with(@id,'4')] .. çalışmadı....
+
+
+CSS: a[id^='id_prefix_']
+CSS: a[id$='_id_sufix']
+CSS: a[id*='id_pattern']
+
+
+
+Xpath=//*[@type='submit' OR @name='btnReset']
+Xpath=//input[@type='submit' and @name='btnLogin']
+Xpath=//label[starts-with(@id,'message')]
+
+**xpath**powerpoint**
+XPath we can traverse both forward and backward whereas CSS selector only moves forward
+XPath can search by text, using contains functionality
+
+ID first
+CSS selector for everything else
+When nothing else works, use XPath
+
+XPath is defined as XML path.
+XPath is used to find the location of any element on a webpage using HTML DOM structure.
+
+
+There are two types of XPath:
+1) Absolute XPath
+2) Relative XPath
+
+Absolute xpath:
+/html/body/div[2]/div/section/figure/figcaption/div[2]
+
+Relative xpath:
+//*[@id="contact_form"]
+
+Xpath=//input[@type='text']
+Xpath=//label[@id='message23']
+Xpath=//input[@value='RESET']
+Xpath=//*[@class='barone']
+Xpath=//a[@href='http://demo.guru99.com/']
+Xpath= //img[@src='//cdn.guru99.com/images/home/java.png']
+
+Contains():
+Xpath=//*[contains(@type,'sub')]   type inde sub kelimesi geçen
+Xpath=//*[contains(@name,'btn')]
+Xpath=//*[contains(@id,'message')]
+Xpath=//*[contains(@href,'guru99.com’)]
+Xpath=//h2[contains(text(),'Popular right now')]
+
+Starts-with function
+Xpath=//label[starts-with(@id,'message')]
+
+Ends-with function
+Xpath=//label[ends-with(@id,'message')]
+The ends-with function is part of xpath 2.0 but browsers generally only support 1.0
+
+Using OR & AND
+Xpath=//*[@type='submit' or @name='btnReset']
+Xpath=//input[@type='submit' and @name='btnLogin’]
+Xpath =//span[@role='menuitem' or @class='text-gray-darker’]
+Or = || in java
+And = && in java
+Xpath =//a[@id='item_0_title_link' or @href='./inventory-item.html?id=0']
+
+Text()
+Xpath=//*[text()='First Name']
+
+Following
+Xpath=//*[@type='text']//following::input
+
+Preceding
+Xpath=//*[@type='submit']//preceding::input
+all nodes that come before the current node
+(//div[@class='inventory_item'])[3]/preceding-sibling::div
+
+By Index []
+Xpath=//*[@type='text']//following::input[1]
+
+Child
+Xpath=//*[@id='java_technologies']//child::li
+Xpath=//div[@class='cart_list']//a
+Selects all children elements of the current node
+
+Following-sibling (siblings on same level)
+xpath=//*[@type='submit']//following-sibling::input
+
+.. going up one level
+xpath=//*[@type='submit']/../span
+Xpath=//*[text()='ADD TO CART']/parent::div
+
+
+
+
+
+
